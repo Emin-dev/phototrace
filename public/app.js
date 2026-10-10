@@ -3,6 +3,14 @@ const $=id=>document.getElementById(id);
 const statuses={verified:'Bytes verified',missing:'Missing',changed:'Changed',ambiguous:'Ambiguous',reported:'Reported hash',unverified:'Path only'};
 const state={source:null,destination:null,report:null,sourceManifest:null,destinationManifest:null,observations:null,samplePayloads:null,worker:null,version:0,filter:'all',query:'',selected:null,reviews:new Map(),sample:true,pending:{source:0,destination:0},replacementPending:null};
 let sample;
+// Geometric, decorative icons never rely on installed symbol fonts or HTML parsing.
+function decorativeIcon(kind){
+ const paths={check:'M5 12l4 4L19 6',chevron:'M9 5l7 7-7 7'};
+ if(!Object.hasOwn(paths,kind))throw new Error('Unknown decorative icon');
+ const ns='http://www.w3.org/2000/svg',icon=document.createElementNS(ns,'svg'),path=document.createElementNS(ns,'path');
+ for(const [name,value]of Object.entries({class:'ui-icon','data-icon':kind,viewBox:'0 0 24 24',width:'24',height:'24',fill:'none',stroke:'currentColor','stroke-width':'1.7','stroke-linecap':'round','stroke-linejoin':'round','aria-hidden':'true',focusable:'false'}))icon.setAttribute(name,value);
+ path.setAttribute('d',paths[kind]);icon.append(path);return icon;
+}
 function text(id,value){$(id).textContent=value;}
 function showError(message){text('error',message);$('error').hidden=false;text('status','');}
 function clearError(){$('error').hidden=true;}
@@ -158,7 +166,7 @@ function renderList(){const list=$('file-list');list.replaceChildren();const row
  for(const f of rows){const index=state.report.findings.indexOf(f),button=document.createElement('button');button.className=`file-row${state.selected===f.id?' selected':''}`;button.setAttribute('aria-pressed',String(state.selected===f.id));button.setAttribute('aria-label',`${f.path}, ${statuses[f.status]}, inspect evidence`);button.dataset.id=f.id;
  const thumb=document.createElement('span');thumb.className=`thumb t${index%6}`;thumb.setAttribute('aria-hidden','true');
  const info=document.createElement('span');info.className='file-info';const name=document.createElement('span');name.className='file-name';name.textContent=f.path.split('/').pop();const sub=document.createElement('span');sub.className='file-sub';sub.textContent=f.status==='verified'?f.issues.length?`${f.issues.length} association / metadata exception(s)`:'Both file contents checked':f.status==='reported'?'Imported SHA-256 · not read here':f.status==='unverified'?'Path match · bytes unknown':f.status==='missing'?'Not found in supplied destination':f.status==='ambiguous'?`${f.candidate_count} possible destination records`:'Size or SHA-256 disagreement';info.append(name,sub);
- const end=document.createElement('span');end.className='row-end';if(reviewFor(f.id).acknowledged){const reviewed=document.createElement('span');reviewed.className='review-mark';reviewed.textContent='✓';reviewed.title='Human reviewed';end.append(reviewed);}const badge=document.createElement('span');badge.className=`status-badge ${f.status}`;badge.textContent=statuses[f.status];const arrow=document.createElement('span');arrow.className='row-chevron';arrow.textContent='›';arrow.setAttribute('aria-hidden','true');end.append(badge,arrow);button.append(thumb,info,end);button.addEventListener('click',()=>selectFinding(f.id,true));list.append(button);}
+ const end=document.createElement('span');end.className='row-end';if(reviewFor(f.id).acknowledged){const reviewed=document.createElement('span');reviewed.className='review-mark';reviewed.append(decorativeIcon('check'));reviewed.title='Human reviewed';end.append(reviewed);}const badge=document.createElement('span');badge.className=`status-badge ${f.status}`;badge.textContent=statuses[f.status];const arrow=document.createElement('span');arrow.className='row-chevron';arrow.append(decorativeIcon('chevron'));arrow.setAttribute('aria-hidden','true');end.append(badge,arrow);button.append(thumb,info,end);button.addEventListener('click',()=>selectFinding(f.id,true));list.append(button);}
  if(!rows.length){const p=document.createElement('p');p.className='no-files';p.textContent='No files match this view. Try another filter or search.';list.append(p);}text('list-footer',`Showing ${rows.length} of ${state.report.source_count} source records · read-only comparison`);
 }
 function markSelection(){document.querySelectorAll('.file-row').forEach(button=>{button.classList.toggle('selected',button.dataset.id===state.selected);button.setAttribute('aria-pressed',String(button.dataset.id===state.selected));});}

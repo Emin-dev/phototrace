@@ -6,3 +6,6 @@
 @media(prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}}
 .record-details{margin-top:14px;font-size:10px;color:#65727c}.record-details summary{cursor:pointer;padding:8px 0}.record-details pre{max-height:270px;max-width:100%;overflow:auto;font:10px/1.6 monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#f7f8f9;padding:10px;border:1px solid #e8ecee;border-radius:5px}
 #replace-warning{margin-top:12px}#replace-export-status:not(:empty){margin-top:16px;padding:10px 12px;background:#edf6f2;color:#376851;border-radius:6px;font-size:12px}.replacement-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.replacement-actions .button-primary{margin-top:0}.replacement-actions button{min-height:40px}@media(max-width:540px){.replacement-actions{flex-direction:column}.replacement-actions button{width:100%;min-height:44px}}
+
+/* Local geometric icons remain legible without optional symbol fonts. */
+.ui-icon{display:inline-block;width:1em;height:1em;vertical-align:-.125em;flex-shrink:0;overflow:visible}.art-badge .ui-icon{width:16px;height:16px;vertical-align:-3px}.close-dialog .ui-icon{vertical-align:-2px}
