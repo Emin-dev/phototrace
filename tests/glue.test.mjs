@@ -5,20 +5,23 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import {validateManifest,validateFiles,validateInput} from '../public/validation.js';
-const code=(await fs.readFile(new URL('../public/app.js',import.meta.url),'utf8')).replace(/^import .*\n/,'').split("for(const side of ['source','destination'])")[0];
+const appSource=(await fs.readFile(new URL('../public/app.js',import.meta.url),'utf8')).replace(/^import .*\n/,'');
+const code=appSource.split("for(const side of ['source','destination'])")[0];
+// Register the exact application close callback so delayed browser events are covered.
+const closeRegistration=appSource.match(/\$\('replace-dialog'\)\.addEventListener\('close',.*?(?=;\$\('back-to-list'\))/)[0]+';';
 const empty={schema_version:1,label:'Valid prior manifest',completeness:'partial',records:[]};
 function harness({postThrows=false,constructorThrows=false,fetch}={}){
  const nodes=new Map(),workers=[],downloads=[];
  const document={activeElement:null,getElementById:id=>get(id),createElement:tag=>new Element(tag),querySelectorAll:selector=>selector==='.file-row'?get('file-list').children:[]};
  class Element{
-  constructor(tag='div'){this.tag=tag;this.hidden=false;this.disabled=false;this.textContent='';this.value='';this.children=[];this.dataset={};this.attributes={};this.checked=false;this.open=false;this.classList={toggle(){}};}
-  append(...children){this.children.push(...children);}replaceChildren(...children){this.children=children;}setAttribute(k,v){this.attributes[k]=String(v);}addEventListener(){}focus(){document.activeElement=this;}scrollIntoView(){}showModal(){this.open=true;}close(){this.open=false;}click(){}remove(){}
+  constructor(tag='div'){this.tag=tag;this.hidden=false;this.disabled=false;this.textContent='';this.value='';this.children=[];this.dataset={};this.attributes={};this.checked=false;this.open=false;this.listeners={};this.classList={toggle(){}};}
+  append(...children){this.children.push(...children);}replaceChildren(...children){this.children=children;}setAttribute(k,v){this.attributes[k]=String(v);}addEventListener(type,listener){this.listeners[type]=listener;}dispatchEvent(event){this.listeners[event.type]?.(event);}focus(){document.activeElement=this;}scrollIntoView(){}showModal(){this.open=true;}close(){this.open=false;}click(){}remove(){}
  }
  document.body=new Element('body');
  const get=id=>{if(!nodes.has(id))nodes.set(id,new Element());return nodes.get(id);};
  class WorkerShim{constructor(){if(constructorThrows)throw new Error('Worker unavailable');workers.push(this);this.terminated=false;}postMessage(input){if(postThrows)throw new Error('Structured clone failed');structuredClone(input);}terminate(){this.terminated=true;}}
  const context=vm.createContext({document,Worker:WorkerShim,fetch,Blob,URL:{createObjectURL:blob=>{downloads.push(blob);return 'blob:test';},revokeObjectURL(){}},setTimeout:fn=>fn(),validateManifest,validateFiles,validateInput,Error,SyntaxError,TextEncoder,structuredClone,matchMedia:()=>({matches:false}),console});
- vm.runInContext(code+'\nglobalThis.h={state,importManifest,selectFiles,compare,loadSample,selectFinding,renderList,stop,finishReplacement,exportBeforeReplacement};',context);
+ vm.runInContext(code+'\n'+closeRegistration+'\nglobalThis.h={state,importManifest,selectFiles,compare,loadSample,selectFinding,renderList,stop,finishReplacement,exportBeforeReplacement};',context);
  const h=context.h;
  h.state.source={mode:'manifest',manifest:structuredClone(empty)};h.state.destination={mode:'manifest',manifest:structuredClone(empty)};
  h.state.report={manifest_fingerprint:'previous',findings:[]};h.state.reviews.set('important',{acknowledged:true,note:'Keep this note'});
@@ -46,3 +49,6 @@ test('initial sample startup without human review never asks to discard data',as
 test('invalid replacement never opens a warning and keeps existing session',async()=>{const t=harness(),before=t.h.state.report;await t.h.importManifest('source',{size:4,text:async()=>'{bad'});await t.h.selectFiles('source',[{name:'oversize',size:33*1024*1024}]);remains(t,before);assert.equal(t.get('replace-dialog').open,false);assert.equal(t.h.state.replacementPending,null);});
 test('confirmation is rechecked after awaiting so superseded data cannot commit',async()=>{const t=harness(),before=t.h.state.report;const old=t.h.selectFiles('source',[{name:'old.txt',size:1}]);t.h.finishReplacement(true);const newer=t.h.selectFiles('source',[{name:'new.txt',size:1}]);await old;remains(t,before);t.h.finishReplacement(true);await newer;assert.equal(t.h.state.source.files[0].name,'new.txt');});
 test('new comparison supersedes an open replacement dialog safely',async()=>{const t=harness(),before=t.h.state.report;const pending=t.h.selectFiles('source',[{name:'not-applied.txt',size:1}]);await t.h.compare();await pending;remains(t,before);assert.equal(t.get('replace-dialog').open,false);assert.equal(t.h.state.source.mode,'manifest');t.h.stop();});
+
+test('delayed close from an earlier dialog cannot cancel a newly reopened replacement',async()=>{const t=harness(),before=t.h.state.report;const first=t.h.selectFiles('source',[{name:'first.txt',size:1}]);t.h.finishReplacement(false,true);const second=t.h.selectFiles('source',[{name:'second.txt',size:2}]);const current=t.h.state.replacementPending;assert.equal(t.get('replace-dialog').open,true);t.get('replace-dialog').dispatchEvent({type:'close'});assert.equal(t.h.state.replacementPending,current);assert.equal(t.get('replace-dialog').open,true);remains(t,before);t.h.finishReplacement(true);await Promise.all([first,second]);assert.equal(t.h.state.source.files[0].name,'second.txt');assert.equal(t.h.state.reviews.size,0);});
+test('closing the active replacement dialog still preserves the current review',async()=>{const t=harness(),before=t.h.state.report;const pending=t.h.selectFiles('source',[{name:'new.txt',size:1}]);t.get('replace-dialog').close();t.get('replace-dialog').dispatchEvent({type:'close'});await pending;remains(t,before);assert.equal(t.h.state.replacementPending,null);});
