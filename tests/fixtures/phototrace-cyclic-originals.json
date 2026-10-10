@@ -1,0 +1,60 @@
+{
+  "source": {
+    "schema_version": 1,
+    "label": "Independent QA",
+    "completeness": "partial",
+    "records": [
+      {
+        "id": "s1",
+        "path": "one.jpg",
+        "size": 3,
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "path_hash": null,
+        "kind": "edited",
+        "original_id": "s2",
+        "albums": [],
+        "metadata": {}
+      },
+      {
+        "id": "s2",
+        "path": "two.jpg",
+        "size": 3,
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path_hash": null,
+        "kind": "edited",
+        "original_id": "s1",
+        "albums": [],
+        "metadata": {}
+      }
+    ]
+  },
+  "destination": {
+    "schema_version": 1,
+    "label": "Independent QA",
+    "completeness": "partial",
+    "records": [
+      {
+        "id": "d1",
+        "path": "one.jpg",
+        "size": 3,
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "path_hash": null,
+        "kind": "edited",
+        "original_id": "d2",
+        "albums": [],
+        "metadata": {}
+      },
+      {
+        "id": "d2",
+        "path": "two.jpg",
+        "size": 3,
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path_hash": null,
+        "kind": "edited",
+        "original_id": "d1",
+        "albums": [],
+        "metadata": {}
+      }
+    ]
+  }
+}

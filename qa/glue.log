@@ -1,0 +1,28 @@
+✔ invalid JSON, oversized manifest and semantic schema failure preserve previous report and notes (4.54293ms)
+✔ invalid local count/size/name preserves previous report and notes (2.057449ms)
+✔ valid replacement commits only after explicit confirmation (9.618481ms)
+✔ deep unknown manifest property is rejected before structured clone (3.260372ms)
+✔ structured clone and worker-construction failures always clean up and retain retry (2.548097ms)
+✔ superseded sample fetch rejection cannot overwrite a newer comparison status (1.512946ms)
+✔ superseded sample fetch success cannot replace newer selected files (2.65788ms)
+✔ a slower same-side import cannot overwrite a later valid selection (1.203635ms)
+✔ completion announces counts through the existing status region (1.656128ms)
+✔ desktop record selection keeps the row node and focuses inspector heading (1.48746ms)
+✔ strict validator rejects nested data and unsafe-integer sizes without recursion (0.718679ms)
+✔ source and destination actions have distinct accessible names and count channel is live (2.737416ms)
+✔ staged valid manifest cancellation preserves all review state and exportability (1.645518ms)
+✔ export-first exports current report and notes without committing replacement (2.271852ms)
+✔ selected-file replacement can be cancelled or deliberately confirmed (1.297202ms)
+✔ sample replacement prompts after validation and supports keep then confirm (1.835287ms)
+✔ initial sample startup without human review never asks to discard data (1.162614ms)
+✔ invalid replacement never opens a warning and keeps existing session (1.139747ms)
+✔ confirmation is rechecked after awaiting so superseded data cannot commit (1.079765ms)
+✔ new comparison supersedes an open replacement dialog safely (0.988257ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 159.213145

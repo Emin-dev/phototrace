@@ -1,0 +1,49 @@
+{
+  "source": {
+    "schema_version": 1,
+    "label": "Independent QA",
+    "completeness": "partial",
+    "records": [
+      {
+        "id": "s1",
+        "path": "before.jpg",
+        "size": 3,
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "path_hash": null,
+        "kind": "original",
+        "original_id": null,
+        "albums": [],
+        "metadata": {}
+      },
+      {
+        "id": "s2",
+        "path": "after.jpg",
+        "size": 3,
+        "sha256": null,
+        "path_hash": null,
+        "kind": "original",
+        "original_id": null,
+        "albums": [],
+        "metadata": {}
+      }
+    ]
+  },
+  "destination": {
+    "schema_version": 1,
+    "label": "Independent QA",
+    "completeness": "partial",
+    "records": [
+      {
+        "id": "d1",
+        "path": "after.jpg",
+        "size": 3,
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "path_hash": null,
+        "kind": "original",
+        "original_id": null,
+        "albums": [],
+        "metadata": {}
+      }
+    ]
+  }
+}

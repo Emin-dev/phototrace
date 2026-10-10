@@ -1,0 +1,54 @@
+
+> phototrace-demo@0.1.0 test
+> node --test tests/wasm.test.mjs tests/glue.test.mjs tests/contrast.test.mjs
+
+normal: #fff on #b55330 = 4.947:1
+hover: #fff on #984124 = 6.738:1
+focus: #fff on #b55330 = 4.947:1
+active: #fff on #b55330 = 4.947:1
+✔ primary button normal text contrast meets 4.5:1 (2.967439ms)
+✔ primary button hover text contrast meets 4.5:1 (0.621177ms)
+✔ primary button focus text contrast meets 4.5:1 (1.749841ms)
+✔ primary button active text contrast meets 4.5:1 (0.699038ms)
+✔ invalid JSON, oversized manifest and semantic schema failure preserve previous report and notes (3.799352ms)
+✔ invalid local count/size/name preserves previous report and notes (1.153388ms)
+✔ valid replacement commits only after explicit confirmation (6.515749ms)
+✔ deep unknown manifest property is rejected before structured clone (4.625904ms)
+✔ structured clone and worker-construction failures always clean up and retain retry (2.582772ms)
+✔ superseded sample fetch rejection cannot overwrite a newer comparison status (4.875367ms)
+✔ superseded sample fetch success cannot replace newer selected files (1.800548ms)
+✔ a slower same-side import cannot overwrite a later valid selection (1.813217ms)
+✔ completion announces counts through the existing status region (2.531117ms)
+✔ desktop record selection keeps the row node and focuses inspector heading (2.387372ms)
+✔ strict validator rejects nested data and unsafe-integer sizes without recursion (0.811362ms)
+✔ source and destination actions have distinct accessible names and count channel is live (2.188704ms)
+✔ staged valid manifest cancellation preserves all review state and exportability (2.004871ms)
+✔ export-first exports current report and notes without committing replacement (3.938929ms)
+✔ selected-file replacement can be cancelled or deliberately confirmed (1.538088ms)
+✔ sample replacement prompts after validation and supports keep then confirm (2.206543ms)
+✔ initial sample startup without human review never asks to discard data (1.932694ms)
+✔ invalid replacement never opens a warning and keeps existing session (1.433753ms)
+✔ confirmation is rechecked after awaiting so superseded data cannot commit (1.601023ms)
+✔ new comparison supersedes an open replacement dialog safely (1.876633ms)
+✔ WASM hash matches native SHA-256 for empty, unicode, and 1 MiB inputs (27.162367ms)
+✔ bundled sample runs actual WASM and confirms intentional gaps (11.232563ms)
+✔ same sample imported as manifests has zero locally verified files (3.942835ms)
+✔ local File bytes are hashed before verification, with unknown metadata (2.741534ms)
+✔ different actual bytes with same filename are changed (2.209551ms)
+✔ local duplicate content never silently covers two sources (2.712654ms)
+✔ worker rejects file count, per-file size, and total limits before read (6.524357ms)
+✔ Rust rejects unknown provenance fields and malformed JSON (3.309274ms)
+✔ case-sensitive paths and no basename-only false matches (2.12369ms)
+✔ worst-case duplicate input is bounded to 20 displayed candidates per finding (902.154531ms)
+✔ hostile filenames remain data in the JSON output (7.437258ms)
+✔ fingerprint changes when a record or observation changes (2.452928ms)
+✔ review regression: mixed hash/path claims cannot share a destination (4.076212ms)
+✔ review regression: cyclic edited references are never covered originals (1.793805ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1122.879937
