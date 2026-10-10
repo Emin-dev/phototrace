@@ -1,0 +1,53 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (target/debug/deps/phototrace_core-3c21a4a6f295580a)
+
+running 24 tests
+test tests::absent_is_missing ... ok
+test tests::case_normalized_hashes ... ok
+test tests::album_missing_metadata_unknown ... ok
+test tests::destination_extras_visible ... ok
+test tests::changed_hash ... ok
+test tests::cyclic_edits_are_not_originals ... ok
+test tests::duplicate_hash_is_ambiguous ... ok
+test tests::invalid_completeness_claim_rejected ... ok
+test tests::obs_size_limit ... ok
+test tests::imported_hash_is_not_verified ... ok
+test tests::mixed_hash_and_path_double_claim_is_ambiguous ... ok
+test tests::observed_both_is_verified ... ok
+test tests::path_hash_never_verifies ... ok
+test tests::schema_rejects_provenance_injection ... ok
+test tests::size_conflict_prevents_equal_hash_match ... ok
+test tests::source_duplicates_cannot_share_one_destination ... ok
+test tests::traversal_rejected ... ok
+test tests::valid_original_edit_pairs_remain_covered ... ok
+test tests::hash_known_vector ... ok
+test tests::duplicate_id_rejected ... ok
+test tests::invalid_hash_rejected ... ok
+test tests::empty_manifests_are_valid_without_completeness_claim ... ok
+test tests::relationship_original_missing ... ok
+test tests::limit_rejected ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests phototrace_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling generic-array v0.14.7
+   Compiling typenum v1.20.1
+   Compiling memchr v2.8.3
+   Compiling serde_core v1.0.229
+   Compiling zmij v1.0.23
+   Compiling serde_json v1.0.151
+   Compiling serde v1.0.229
+   Compiling itoa v1.0.18
+   Compiling cfg-if v1.0.5
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling digest v0.10.7
+   Compiling sha2 v0.10.9
+   Compiling phototrace-core v0.1.0 (.)
+    Finished `release` profile [optimized] target(s) in 4.96s
+PASS: prebuilt WASM (215087 bytes), static assets, 21 pinned license packages, and explicit static Vercel build.

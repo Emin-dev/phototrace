@@ -1,0 +1,22 @@
+✔ WASM hash matches native SHA-256 for empty, unicode, and 1 MiB inputs (30.45088ms)
+✔ bundled sample runs actual WASM and confirms intentional gaps (15.880434ms)
+✔ same sample imported as manifests has zero locally verified files (4.22285ms)
+✔ local File bytes are hashed before verification, with unknown metadata (3.995789ms)
+✔ different actual bytes with same filename are changed (3.49205ms)
+✔ local duplicate content never silently covers two sources (3.382378ms)
+✔ worker rejects file count, per-file size, and total limits before read (10.106083ms)
+✔ Rust rejects unknown provenance fields and malformed JSON (4.670382ms)
+✔ case-sensitive paths and no basename-only false matches (2.750778ms)
+✔ worst-case duplicate input is bounded to 20 displayed candidates per finding (1185.201798ms)
+✔ hostile filenames remain data in the JSON output (5.084735ms)
+✔ fingerprint changes when a record or observation changes (1.519835ms)
+✔ review regression: mixed hash/path claims cannot share a destination (8.731718ms)
+✔ review regression: cyclic edited references are never covered originals (2.483171ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1410.156982

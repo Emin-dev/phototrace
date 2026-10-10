@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "label": "Destination library export",
+  "completeness": "supplied_export",
+  "records": [
+    {
+      "id": "d1",
+      "path": "Library/coast.HEIC",
+      "size": 34,
+      "sha256": "a557a06b402eea6ba83bebaec72a503c6a2adf533c630d009b3748b592984eb4",
+      "path_hash": null,
+      "kind": "original",
+      "original_id": null,
+      "albums": [
+        "Summer, 2025"
+      ],
+      "metadata": {
+        "captured_at": "2025-07-12T08:14:00Z"
+      }
+    },
+    {
+      "id": "d2",
+      "path": "Library/hills.HEIC",
+      "size": 27,
+      "sha256": "2ba18ef299bb76800c65b70eeb734779d3dafdf7a7a760dbb6274d37b7dbdef0",
+      "path_hash": null,
+      "kind": "original",
+      "original_id": null,
+      "albums": [],
+      "metadata": {
+        "captured_at": "2025-07-12T10:30:00Z"
+      }
+    },
+    {
+      "id": "d4",
+      "path": "2025/IMG_0424.HEIC",
+      "size": 39,
+      "sha256": "7bc98dbe41ca3db292edfc57e6dd279d0e4f8ca6003b6a47c5551ae8a06b22a8",
+      "path_hash": null,
+      "kind": "original",
+      "original_id": null,
+      "albums": [],
+      "metadata": {}
+    },
+    {
+      "id": "d5",
+      "path": "Library/lake.HEIC",
+      "size": 23,
+      "sha256": "2e1044c6dc0b4466b18eb04b03eb729fa071178dbf526f169e11af8bda6dcc89",
+      "path_hash": null,
+      "kind": "original",
+      "original_id": null,
+      "albums": [],
+      "metadata": {}
+    },
+    {
+      "id": "d5b",
+      "path": "Library/lake-copy.HEIC",
+      "size": 23,
+      "sha256": "2e1044c6dc0b4466b18eb04b03eb729fa071178dbf526f169e11af8bda6dcc89",
+      "path_hash": null,
+      "kind": "original",
+      "original_id": null,
+      "albums": [],
+      "metadata": {}
+    },
+    {
+      "id": "d6",
+      "path": "2025/IMG_0426.HEIC",
+      "size": null,
+      "sha256": null,
+      "path_hash": "12ec5111f554b00823dababf5e930a31f33ce0c93234c049fd800e5ed8222874",
+      "kind": "original",
+      "original_id": null,
+      "albums": null,
+      "metadata": null
+    },
+    {
+      "id": "d7",
+      "path": "Library/edited.JPG",
+      "size": 31,
+      "sha256": "3c4ea3bd061741dca7227542c58c515ce8ece324c3d5abf0cd0773127bf1310d",
+      "path_hash": null,
+      "kind": "edited",
+      "original_id": "not-supplied-original",
+      "albums": [
+        "Favorites"
+      ],
+      "metadata": {}
+    },
+    {
+      "id": "d8",
+      "path": "Library/lighthouse.HEIC",
+      "size": 29,
+      "sha256": "1c91024c9f84d34e7560794513b97b2c2c1e56e2462a44720bb25ae6071d7ec5",
+      "path_hash": null,
+      "kind": "original",
+      "original_id": null,
+      "albums": [],
+      "metadata": {}
+    },
+    {
+      "id": "d9",
+      "path": "Library/extra.HEIC",
+      "size": 35,
+      "sha256": "4257618eea287c0bc07f3538d00b0f69ad3019d6f4c403ac4951c3e822675c0f",
+      "path_hash": null,
+      "kind": "original",
+      "original_id": null,
+      "albums": [],
+      "metadata": {}
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+normal: #fff on #b55330 = 4.947:1
+hover: #fff on #984124 = 6.738:1
+focus: #fff on #b55330 = 4.947:1
+active: #fff on #b55330 = 4.947:1
+✔ primary button normal text contrast meets 4.5:1 (2.498634ms)
+✔ primary button hover text contrast meets 4.5:1 (0.621155ms)
+✔ primary button focus text contrast meets 4.5:1 (1.367348ms)
+✔ primary button active text contrast meets 4.5:1 (0.403914ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 108.133345

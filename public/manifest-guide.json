@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "label": "My supplied export",
+  "completeness": "partial",
+  "records": [
+    {
+      "id": "unique-record-1",
+      "path": "2025/IMG_0001.HEIC",
+      "size": null,
+      "sha256": null,
+      "path_hash": null,
+      "kind": "unknown",
+      "original_id": null,
+      "albums": null,
+      "metadata": null
+    }
+  ]
+}

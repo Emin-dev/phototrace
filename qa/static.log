@@ -1,0 +1,1 @@
+PASS: prebuilt WASM (215087 bytes), static assets, 21 pinned crate license packages, exact Rust 1.99.0 library notice, and explicit static Vercel build.
